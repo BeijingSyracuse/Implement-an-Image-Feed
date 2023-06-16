@@ -2,13 +2,11 @@ import { useState } from "react";
 import {useEffect } from "react";
 import type { PaginationProps } from 'antd';
 import { Pagination } from 'antd';
-
-//import Images from './Images';
-import '../css/feed.css';
+import '..feedimages.css';
 
 const Feed: React.FC = () => {
     const [current, setCurrent] = useState(1);
-    const [sum, setSum] = useState(50);
+    const [sum, setSum] = useState(100);
     const [images, setImages] = useState([]);
   
     const onChange: PaginationProps['onChange'] = (page) => {
@@ -28,8 +26,8 @@ const Feed: React.FC = () => {
                 page: current
             }
         }
-        .then((res) => {
-            setImages(res.data.results);
+        .then((result) => {
+            setImages(result.data.results);
         })
     }, [current]);
   
@@ -51,7 +49,6 @@ const Feed: React.FC = () => {
   };
   
 export default Feed;
-
 
   type Image = {
     id: number;
@@ -83,4 +80,3 @@ const Images = ({ imagesData }: ImagesProps) => {
     );
 }
 
-//export React.memo(Images);
